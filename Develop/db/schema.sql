@@ -96,4 +96,24 @@ VALUES
 	(4, 8),
 	(5, 3);
 
-    
+
+
+USE penn_lps;  
+GO  
+EXEC sp_rename 'h13Categories', 'Categories';  
+GO  
+
+USE penn_lps;  
+GO  
+EXEC sp_rename 'h13Products', 'Products';  
+GO      
+
+USE penn_lps;  
+GO  
+EXEC sp_rename 'h13Tags', 'Tags';  
+GO  
+
+USE penn_lps;  
+GO  
+EXEC sp_rename 'h13ProductTags', 'ProductTags';  
+GO      
