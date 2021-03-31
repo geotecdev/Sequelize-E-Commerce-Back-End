@@ -57,6 +57,7 @@ router.put("/:id", async (req, res) => {
           res.status(400).json({ message: "Update failed: no category with the specified id was found" });
           return;
       }
+      res.status(200).json(categoryData);
     } catch (err) {
         res.status(500).json(err);
     }
@@ -74,6 +75,7 @@ router.delete("/:id", async (req, res) => {
             res.status(400).json({ message: "Delete failed: no category with the specified id was found" });
             return;
         }
+        res.status(200).json(delCategory);
   } catch (err) {
     res.status(500).json(err);
   }
