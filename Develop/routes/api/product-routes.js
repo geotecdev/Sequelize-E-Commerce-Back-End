@@ -37,7 +37,7 @@ router.get("/:id", async (req, res) => {
 });
 
 // create new product
-router.post("/", async (req, res) => {
+router.post("/", (req, res) => {
   /* req.body should look like this...
     {
       product_name: "Basketball",
@@ -69,7 +69,7 @@ router.post("/", async (req, res) => {
 });
 
 // update product
-router.put("/:id", async (req, res) => {
+router.put("/:id", (req, res) => {
   // update product data
   Product.update(req.body, {
     where: {
@@ -112,6 +112,20 @@ router.put("/:id", async (req, res) => {
 
 router.delete("/:id", async (req, res) => {
     // delete one product by its `id` value
+    try {
+        const delProduct = await Product.destroy({
+            where: {
+                id: req.params.id
+            }
+        });
+        if (!delProduct) {
+            res.status(400).json({ message: "Delete failed: no product with the specified id was found" })
+            return;
+        }
+        res.status(200).json(delProduct);
+    } catch (err) {
+        res.status(500).json(err);
+    }
 });
 
 module.exports = router;
