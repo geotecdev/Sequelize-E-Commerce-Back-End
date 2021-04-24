@@ -33,7 +33,8 @@ ProductTag.init(
   {
     sequelize,
     timestamps: false,
-    modelName: 'ProductTag',
+    freezeTableName: true,
+    modelName: 'productTag',
   }
 );
 
