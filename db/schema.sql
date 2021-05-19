@@ -1,63 +1,42 @@
--- DROP DATABASE
+
 DROP DATABASE IF EXISTS ecommerce_db;
 
--- CREATE DATABASE
 CREATE DATABASE ecommerce_db;
 
+USE ecommerce_db;
+
+CREATE TABLE Categories (
+    id INTEGER NOT NULL AUTO_INCREMENT,
+    category_name VARCHAR(100) NOT NULL,
+    PRIMARY KEY (id)    
+);
+
+CREATE TABLE  Tags (
+    id INTEGER NOT NULL AUTO_INCREMENT,
+    tag_name VARCHAR(100) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE Products (
+    id INTEGER NOT NULL AUTO_INCREMENT,
+    product_name VARCHAR(100) NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
+    stock INTEGER NOT NULL,
+    category_id INTEGER,
+    PRIMARY KEY (id),
+    FOREIGN KEY (category_id) REFERENCES Categories(id) ON DELETE CASCADE
+);
+
+CREATE TABLE ProductTags (
+    id INTEGER NOT NULL AUTO_INCREMENT,
+    product_id INTEGER,
+    tag_id INTEGER,
+    PRIMARY KEY (id),
+    FOREIGN KEY (product_id) REFERENCES Products(id) ON DELETE CASCADE,
+    FOREIGN KEY (tag_id) REFERENCES Tags(id) ON DELETE CASCADE
+);
 
 
--- --Categories - id, category_name
--- CREATE TABLE [dbo].[Categories] (
--- 	[id][int] NOT NULL IDENTITY,
--- 	[category_name] varchar(100) NOT NULL,
--- 	CONSTRAINT [PK_dbo.Categories] PRIMARY KEY ([id])
--- );
-
--- --Tags - id, tag_name
--- CREATE TABLE [dbo].[Tags] (
--- 	[id][int] NOT NULL IDENTITY,
--- 	[tag_name] varchar(100),
--- 	CONSTRAINT [PK_dbo.Tags] PRIMARY KEY ([id])
--- );
-
--- --Products - id, product_name, price, stock, category_id
--- CREATE TABLE [dbo].[Products] (
--- 	[id][int] NOT NULL IDENTITY,
--- 	[product_name] varchar(100) NOT NULL,
--- 	[price][decimal] NOT NULL,
--- 	[stock][int] NOT NULL,
--- 	[category_id][int]
--- 	CONSTRAINT [PK_dbo.Products] PRIMARY KEY ([id])
--- );
-
--- ALTER TABLE [dbo].[Products]
--- 	ADD CONSTRAINT [FK_dbo.Products_CategoryId]
--- 	FOREIGN KEY ([category_id]) REFERENCES [dbo].[Categories]([id])
--- 	ON DELETE CASCADE;
-
-
--- --ProductTags - id, product_id, tag_id
--- CREATE TABLE [dbo].[ProductTags] (
--- 	[id][int] NOT NULL IDENTITY,
--- 	[product_id][int],
--- 	[tag_id][int]
--- 	CONSTRAINT [PK_dbo.ProductTags] PRIMARY KEY ([id])
--- );
-
--- ALTER TABLE [dbo].[ProductTags]
--- 	ADD CONSTRAINT [FK_dbo.ProductTags_ProductId]
--- 	FOREIGN KEY ([product_id]) REFERENCES [dbo].[Products]([id])
--- 	ON DELETE CASCADE;
-	
--- ALTER TABLE [dbo].[ProductTags]
--- 	ADD CONSTRAINT [FK_dbo.ProductTags_TagId]
--- 	FOREIGN KEY ([tag_id]) REFERENCES [dbo].[Tags]([id])
--- 	ON DELETE CASCADE;
-
-
--- --seed database
-
--- --seed categories
 -- INSERT INTO Categories (category_name)
 -- VALUES
 -- 	('Shirts'),
@@ -66,7 +45,6 @@ CREATE DATABASE ecommerce_db;
 -- 	('Hats'),
 -- 	('Shoes');
 
--- --seed tags
 -- INSERT INTO Tags (tag_name)
 -- VALUES
 -- 	('rock music'),
@@ -78,7 +56,6 @@ CREATE DATABASE ecommerce_db;
 -- 	('gold'),
 -- 	('pop culture');
 
--- --seed products
 -- INSERT INTO Products (product_name, price, stock, category_id)
 -- VALUES
 -- 	('Plain T-Shirt', 14.99, 14, 1),
@@ -87,7 +64,6 @@ CREATE DATABASE ecommerce_db;
 -- 	('Top 40 Music Compilation Vinyl Record', 12.99, 50, 3),
 -- 	('Cargo Shorts', 29.99, 22, 2);
 
--- --seed productTags
 -- INSERT INTO ProductTags (product_id, tag_id)
 -- VALUES
 -- 	(1, 6),
