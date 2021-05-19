@@ -20,7 +20,7 @@ router.get('/:id', async (req, res) => {
     // be sure to include its associated Product data
     try {
         const tag = await Tag.findByPk(req.params.id, {
-            include: [{ model: Product }, { model: Tag, through: ProductTag }],
+            include: [{ model: Product,  through: ProductTag}],
         });
         if (!tag) {
             res.status(400).json({ message: "no tags with the specified id exist in the database" });

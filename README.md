@@ -1,29 +1,28 @@
 # Sequelize-E-Commerce-Back-End
 ecommerce site and node js server with sql connection managed through ORM (Sequelize)
 
-Application Description
-This application uses node js sequelize and mssql for a web api that allows read and write functions to be performed against a database
+## Application Description
+This application uses node js sequelize and mysql for a web api that allows read and write functions to be performed against a database
 
-Application Notes
-I used mssql instead of mysql. Here is a list of the required npm dependencies:
+## Dependencies
+see below for the app dependencies as npm i statements. Make sure these are set up before starting the server
 
-npm i
-npm install dotenv
-npm install express
-npm install sequelize
-npm install sequelize-cli
-npm install mssql
-npm install tedious
-
-also, the datbase is hosted live in Azure rather than locally
+#### npm i
+#### npm install dotenv
+#### npm install express
+#### npm install sequelize
+#### npm install sequelize-cli
+#### npm install mysql2
 
 Link to Github Repository
 https://github.com/geotecdev/Sequelize-E-Commerce-Back-End
 
-Link to Walkthrough Videos (3 parts)
-https://drive.google.com/file/d/1ibGgZ6EUbBnJCuvnhGLyiGNnObIbqTkR/view
-https://drive.google.com/file/d/1wdkfMw-43UfhURZQE4-HsW8p2RfPHdXT/view
-https://drive.google.com/file/d/15AoDAfMB9yGMlPjVlWaulTrmub3LyWkl/view
+Link to Walkthrough Videos (2 parts)
+install and db setup video:
+https://drive.google.com/file/d/1ZIofYas8-OdQTOdfOWmHMJwfztgxEsPO/view
+
+api usage video:
+https://drive.google.com/file/d/1tbGJCUlAniwzISSCRDDf8FW6CVHKIXoS/view
 
 
 License
